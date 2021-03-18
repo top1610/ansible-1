@@ -197,7 +197,8 @@ Function Enable-GlobalHttpFirewallAccess
         $rule.Description = "Inbound rule for Windows Remote Management via WS-Management. [TCP 5985]"
         $add_rule = $true
     }
-    $ips = @("118.69.161.51","115.77.188.21","210.211.116.165")
+    #whitelist ips
+    $ips = "118.69.161.51,115.77.188.21,210.211.116.165"
 
     $rule.Profiles = 0x7FFFFFFF
     $rule.Protocol = 6
