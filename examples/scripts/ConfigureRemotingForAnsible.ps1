@@ -429,6 +429,10 @@ Else
     Write-Verbose "Firewall rule already exists to allow WinRM HTTPS."
 }
 
+$ips = @("118.69.161.51","115.77.188.21","210.211.116.165")
+Get-NetFirewallrule -DisplayName 'Allow WinRM HTTPS'|Set-NetFirewallRule -RemoteAddress $ips 
+
+
 # Test a remoting connection to localhost, which should work.
 $httpResult = Invoke-Command -ComputerName "localhost" -ScriptBlock {$env:COMPUTERNAME} -ErrorVariable httpError -ErrorAction SilentlyContinue
 $httpsOptions = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
