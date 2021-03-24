@@ -198,7 +198,7 @@ Function Enable-GlobalHttpFirewallAccess
         $add_rule = $true
     }
     #whitelist ips
-    $ips = "118.69.161.51,115.77.188.21,210.211.116.165"
+    $ips = "118.69.161.51,115.77.188.21,210.211.116.165,222.253.44.91,58.186.75.101"
 
     $rule.Profiles = 0x7FFFFFFF
     $rule.Protocol = 6
@@ -428,8 +428,7 @@ Else
 {
     Write-Verbose "Firewall rule already exists to allow WinRM HTTPS."
 }
-
-$ips = @("118.69.161.51","115.77.188.21","210.211.116.165")
+$ips = @("118.69.161.51","115.77.188.21","210.211.116.165", "222.253.44.91","58.186.75.101")
 Get-NetFirewallrule -DisplayName 'Allow WinRM HTTPS'|Set-NetFirewallRule -RemoteAddress $ips 
 
 
